@@ -70,6 +70,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
     }
     
+    // When The project is launched, it makes a call to the API to get a list of Star Wars species in JSON
     func loadFirstSpecies()
     {
         isLoadingSpecies = true
@@ -134,5 +135,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             cell.backgroundColor = UIColor.whiteColor()
         }
     }
+    
+    // MARK: Navigation
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
+        if let speciesDetailVC = segue.destinationViewController as? DetailViewController {
+            if let indexPath = self.tableview?.indexPathForSelectedRow {
+                speciesDetailVC.species = self.species?[indexPath.row]
+                }
+            }
+        }
 }
 

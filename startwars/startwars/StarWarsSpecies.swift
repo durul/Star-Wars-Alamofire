@@ -40,10 +40,10 @@ class StarWarsSpecies {
     var classification: String?
     var designation: String?
     var averageHeight: Int?
-    var skinColors: String?
-    var hairColors: String? // TODO: parse into array
-    var eyeColors: String? // TODO: array
-    var averageLifespan: Int?
+    var skinColors: Array<String>?
+    var hairColors: Array<String>?
+    var eyeColors: Array<String>?
+    var averageLifespan: String?
     var homeworld: String?
     var language: String?
     var people: Array<String>?
@@ -54,18 +54,104 @@ class StarWarsSpecies {
   
   required init(json: JSON, id: Int?) {
     print(json)
+    
+    //Parsing JSON Strings & Integers
     self.idNumber = id
+    // strings
     self.name = json[SpeciesFields.Name.rawValue].stringValue
     self.classification = json[SpeciesFields.Classification.rawValue].stringValue
     self.designation = json[SpeciesFields.Designation.rawValue].stringValue
+    self.language = json[SpeciesFields.Language.rawValue].stringValue
+    // lifespan is sometimes "unknown" or "infinite", so we can't use an int
+    self.averageLifespan = json[SpeciesFields.AverageLifespan.rawValue].stringValue
+    self.homeworld = json[SpeciesFields.Homeworld.rawValue].stringValue
+    self.url = json[SpeciesFields.Url.rawValue].stringValue
+    
+    // ints
+    self.averageHeight = json[SpeciesFields.AverageHeight.rawValue].intValue
+    
+    
+    //Parsing JSON String Lists
+    // strings to arrays like "a, b, c"
+    // SkinColors, HairColors, EyeColors
+    if let string = json[SpeciesFields.SkinColors.rawValue].string
+    {
+        self.skinColors = string.splitStringToArray()
+    }
+    if let string = json[SpeciesFields.HairColors.rawValue].string
+    {
+        self.hairColors = string.splitStringToArray()
+    }
+    if let string = json[SpeciesFields.EyeColors.rawValue].string
+    {
+        self.eyeColors = string.splitStringToArray()
+    }
+    
+    // Parsing JSON Arrays of Strings
+    // People, Films
+    // there are arrays of JSON objects, so we need to extract the strings from them
+    if let jsonArray = json[SpeciesFields.People.rawValue].array
+    {
+        self.people = Array<String>()
+        for entry in jsonArray
+        {
+            self.people?.append(entry.stringValue)
+        }
+    }
+    
+    //We can get the underlying Swift array by calling .array
+    if let jsonArray = json[SpeciesFields.Films.rawValue].array
+    {
+        self.films = Array<String>()
+        
+        //We loop through the array elements, get their values as strings and add them to our film & people arrays.
+        for entry in jsonArray
+        {
+            self.films?.append(entry.stringValue)
+        }
+    }
+    
+    //Parsing Dates in JSON
+    // Dates
+    // Created, Edited
+    let dateFormatter = StarWarsSpecies.dateFormatter()
+    if let dateString = json[SpeciesFields.Created.rawValue].string
+    {
+        self.created = dateFormatter.dateFromString(dateString)
+    }
+    if let dateString = json[SpeciesFields.Edited.rawValue].string
+    {
+        self.edited = dateFormatter.dateFromString(dateString)
+    }
+    
     self.averageHeight = json[SpeciesFields.AverageHeight.rawValue].int
-    // TODO: add all the fields!
-  }
+    }
+    
+    class func dateFormatter() -> NSDateFormatter {
+        // create it
+        let aDateFormatter = NSDateFormatter()
+        
+        // set the format as a text string
+        // we might get away with just doing this one line configuration for the date formatter
+        aDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SZ"
+        
+        // but we if leave it at that then the user's settings for datetime & locale
+        // can mess it up. So:
+        // the 'Z' at the end means it's UTC (aka, Zulu time), so let's tell
+        aDateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
+        
+        // dates coming from an english webserver are generally en_US_POSIX locale
+        // this would be different if your server spoke Spanish, Chinese, etc
+        aDateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+        
+        return aDateFormatter
+    }
+
   
     // MARK: Endpoints
-  class func endpointForSpecies() -> String {
-    return "https://swapi.co/api/species/"
-  }
+    class func endpointForSpecies() -> String {
+        return "https://swapi.co/api/species/"
+    }
   
     /*******************************************************************************
      Getting & Processing the API Response
@@ -98,51 +184,56 @@ class StarWarsSpecies {
 }
 
     //MARK: ResponseSpeciesArray with its custom response serializer:
-
-extension Alamofire.Request {
-  func responseSpeciesArray(completionHandler: Response<SpeciesWrapper, NSError> -> Void) -> Self {
-    let responseSerializer = ResponseSerializer<SpeciesWrapper, NSError> { request, response, data, error in
-      
-        guard error == nil else {
-            return .Failure(error!)
-        }
-        
-      guard let responseData = data else {
-        let failureReason = "Array could not be serialized because input data was nil."
-        let error = Error.errorWithCode(.DataSerializationFailed, failureReason: failureReason)
-        return .Failure(error)
-      }
-      
-        //Request.JSONResponseSerializer to get the data as JSON
-        let JSONResponseSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
-        let result = JSONResponseSerializer.serializeResponse(request, response, responseData, error)
-        
-          switch result {
-          case .Success(let value):
-            let json = SwiftyJSON.JSON(value)
-            let wrapper = SpeciesWrapper()
-                wrapper.next = json["next"].stringValue
-                wrapper.previous = json["previous"].stringValue
-                wrapper.count = json["count"].intValue
-            
-            var allSpecies:Array = Array<StarWarsSpecies>()
-                print(json)
-            let results = json["results"]
-                print(results)
-            for jsonSpecies in results
-            {
-              print(jsonSpecies.1)
-                let species = StarWarsSpecies(json: jsonSpecies.1, id: Int(jsonSpecies.0))
-                allSpecies.append(species)
+    //The data passes through a custom response serializer in responseSpeciesArray which parses the top layer of the JSON.
+    extension Alamofire.Request {
+      func responseSpeciesArray(completionHandler: Response<SpeciesWrapper, NSError> -> Void) -> Self {
+        let responseSerializer = ResponseSerializer<SpeciesWrapper, NSError> { request, response, data, error in
+          
+            guard error == nil else {
+                return .Failure(error!)
             }
-            wrapper.species = allSpecies
-                return .Success(wrapper)
-            case .Failure(let error):
-                return .Failure(error)
+            
+          guard let responseData = data else {
+            let failureReason = "Array could not be serialized because input data was nil."
+            let error = Error.errorWithCode(.DataSerializationFailed, failureReason: failureReason)
+            return .Failure(error)
           }
-        }
-        
-        return response(responseSerializer: responseSerializer,
-          completionHandler: completionHandler)
-      }
+          
+            //Request.JSONResponseSerializer to get the data as JSON
+            let JSONResponseSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
+            let result = JSONResponseSerializer.serializeResponse(request, response, responseData, error)
+            
+            //The top layer contains only 4 elements: next, previous, count and results. Parsing the first 3 by using SwiftyJSON
+              switch result {
+              case .Success(let value):
+                let json = SwiftyJSON.JSON(value)
+                let wrapper = SpeciesWrapper()
+            
+                //And we grab the relevant values from the JSON to fill in the wrapper’s properties:
+                //stringValue and intValue try to convert the JSON elements to strings or ints.
+                    wrapper.next = json["next"].stringValue
+                    wrapper.previous = json["previous"].stringValue
+                    wrapper.count = json["count"].intValue
+                
+                //Parsing the array of results is a bit more involved
+                var allSpecies:Array = Array<StarWarsSpecies>()
+                    print(json)
+                let results = json["results"]
+                    print(results)
+                for jsonSpecies in results
+                {
+                  print(jsonSpecies.1)
+                    let species = StarWarsSpecies(json: jsonSpecies.1, id: Int(jsonSpecies.0))
+                    allSpecies.append(species)
+                }
+                wrapper.species = allSpecies
+                    return .Success(wrapper)
+                case .Failure(let error):
+                    return .Failure(error)
+              }
+            }
+            
+            return response(responseSerializer: responseSerializer,
+              completionHandler: completionHandler)
+          }
 }

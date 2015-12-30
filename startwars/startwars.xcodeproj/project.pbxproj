@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2E48ACF91C342E7300E59DE5 /* StarWarsSpecies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48ACF81C342E7300E59DE5 /* StarWarsSpecies.swift */; };
 		2E48ACFB1C34303200E59DE5 /* SpeciesWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48ACFA1C34303200E59DE5 /* SpeciesWrapper.swift */; };
+		2E48ACFE1C34406900E59DE5 /* StringArrayConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48ACFD1C34406900E59DE5 /* StringArrayConvertible.swift */; };
+		2E48AD001C3440BD00E59DE5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48ACFF1C3440BD00E59DE5 /* DetailViewController.swift */; };
 		2EE6305A1C342A7800FF2820 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE630591C342A7800FF2820 /* AppDelegate.swift */; };
 		2EE6305C1C342A7800FF2820 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE6305B1C342A7800FF2820 /* ViewController.swift */; };
 		2EE6305F1C342A7800FF2820 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EE6305D1C342A7800FF2820 /* Main.storyboard */; };
@@ -41,6 +43,8 @@
 		2240963FAC3B4D9CFA21CF6C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E48ACF81C342E7300E59DE5 /* StarWarsSpecies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarWarsSpecies.swift; sourceTree = "<group>"; };
 		2E48ACFA1C34303200E59DE5 /* SpeciesWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeciesWrapper.swift; sourceTree = "<group>"; };
+		2E48ACFD1C34406900E59DE5 /* StringArrayConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringArrayConvertible.swift; sourceTree = "<group>"; };
+		2E48ACFF1C3440BD00E59DE5 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		2EE630561C342A7800FF2820 /* startwars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = startwars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EE630591C342A7800FF2820 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2EE6305B1C342A7800FF2820 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 		2E48ACF61C342E5000E59DE5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				2E48ACFF1C3440BD00E59DE5 /* DetailViewController.swift */,
 				2EE6305B1C342A7800FF2820 /* ViewController.swift */,
 			);
 			name = Controller;
@@ -114,6 +119,14 @@
 				2EE6305D1C342A7800FF2820 /* Main.storyboard */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		2E48ACFC1C34405E00E59DE5 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				2E48ACFD1C34406900E59DE5 /* StringArrayConvertible.swift */,
+			);
+			name = Util;
 			sourceTree = "<group>";
 		};
 		2EE6304D1C342A7800FF2820 = {
@@ -141,6 +154,7 @@
 		2EE630581C342A7800FF2820 /* startwars */ = {
 			isa = PBXGroup;
 			children = (
+				2E48ACFC1C34405E00E59DE5 /* Util */,
 				2E48ACF71C342E5700E59DE5 /* View */,
 				2E48ACF61C342E5000E59DE5 /* Controller */,
 				2E48ACF51C342E4B00E59DE5 /* Model */,
@@ -361,8 +375,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E48AD001C3440BD00E59DE5 /* DetailViewController.swift in Sources */,
 				2E48ACFB1C34303200E59DE5 /* SpeciesWrapper.swift in Sources */,
 				2E48ACF91C342E7300E59DE5 /* StarWarsSpecies.swift in Sources */,
+				2E48ACFE1C34406900E59DE5 /* StringArrayConvertible.swift in Sources */,
 				2EE6305C1C342A7800FF2820 /* ViewController.swift in Sources */,
 				2EE6305A1C342A7800FF2820 /* AppDelegate.swift in Sources */,
 			);
