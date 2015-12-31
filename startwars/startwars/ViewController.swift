@@ -13,7 +13,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var species:Array<StarWarsSpecies>?
     var speciesWrapper:SpeciesWrapper? // holds the last wrapper that we've loaded
     var isLoadingSpecies = false
-    
+
+    //Create a dictionary to hold the images indexed by the species names
+    var imageCache = Dictionary<String, ImageSearchResult>()
+
     @IBOutlet weak var tableview: UITableView?
     
     // MARK: Lifecycle
@@ -40,25 +43,73 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return self.species!.count
     }
     
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
         
-        if self.species != nil && self.species!.count >= indexPath.row
-        {
+        if self.species != nil && self.species!.count >= indexPath.row  {
             let species = self.species![indexPath.row]
+            
             cell.textLabel?.text = species.name
-            cell.detailTextLabel?.text = species.classification
+            
+            cell.detailTextLabel?.text = " " // if it's empty or nil it won't update correctly in iOS 8, see http://stackoverflow.com/questions/25793074/subtitles-of-uitableviewcell-wont-update
+            cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
+            
+            cell.imageView?.image = nil
+            
+            // Caching Images
+            if let name = species.name {
+                // Before retrieving the image, it is checking the cache to see if we already have it.
+                if let cachedImageResult = imageCache[name]
+                {
+                    cell.imageView?.image = cachedImageResult.image // will work fine even if image is nil
+                    cell.detailTextLabel?.text = cachedImageResult.fullAttribution()
+                }
+                else
+                {
+                    // load image from web
+                    // this isn't ideal since it will keep running even if the cell scrolls off of the screen
+                    // if we had lots of cells we'd want to stop this process when the cell gets reused
+                    DuckDuckGoSearchController.imageFromSearchString(name, completionHandler: {
+                        (imageSearchResult, error) in
+                        if error != nil {
+                            print(error)
+                        }
+                        
+                        // Save the image so we won't have to keep fetching it if they scroll
+                        self.imageCache[name] = imageSearchResult
+                        if let cellToUpdate = self.tableview?.cellForRowAtIndexPath(indexPath)
+                        {
+                            if cellToUpdate.imageView?.image == nil
+                            {
+                                cellToUpdate.imageView?.image = imageSearchResult?.image // will work fine even if image is nil
+                                cellToUpdate.detailTextLabel?.text = imageSearchResult?.fullAttribution()
+                                cellToUpdate.setNeedsLayout() // need to reload the view, which won't happen otherwise since this is in an async call
+                            }
+                        }
+                    })
+                }
+            }
             
             // See if we need to load more species
-            let rowsToLoadFromBottom = 5;
-            let rowsLoaded = self.species!.count
-            if (!self.isLoadingSpecies && (indexPath.row >= (rowsLoaded - rowsToLoadFromBottom)))
+            if self.species != nil && self.species!.count >= indexPath.row
             {
-                let totalRows = self.speciesWrapper!.count!
-                let remainingSpeciesToLoad = totalRows - rowsLoaded;
-                if (remainingSpeciesToLoad > 0)
+                let species = self.species![indexPath.row]
+                cell.textLabel?.text = species.name
+                cell.detailTextLabel?.text = species.classification
+                
+                // See if we need to load more species
+                let rowsToLoadFromBottom = 5;
+                let rowsLoaded = self.species!.count
+                if (!self.isLoadingSpecies && (indexPath.row >= (rowsLoaded - rowsToLoadFromBottom)))
                 {
-                    self.loadMoreSpecies()
+                    if let totalRows = self.speciesWrapper?.count {
+                        let remainingSpeciesToLoad = totalRows - rowsLoaded;
+                        if (remainingSpeciesToLoad > 0)
+                        {
+                            self.loadMoreSpecies()
+                        }
+                    }
                 }
             }
         }

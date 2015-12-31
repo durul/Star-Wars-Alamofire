@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2E0E9A831C34976000CB2B8A /* DuckDuckGoSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0E9A821C34976000CB2B8A /* DuckDuckGoSearchController.swift */; };
+		2E0E9A851C3498F600CB2B8A /* ImageSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E0E9A841C3498F600CB2B8A /* ImageSearchResult.swift */; };
 		2E48ACF91C342E7300E59DE5 /* StarWarsSpecies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48ACF81C342E7300E59DE5 /* StarWarsSpecies.swift */; };
 		2E48ACFB1C34303200E59DE5 /* SpeciesWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48ACFA1C34303200E59DE5 /* SpeciesWrapper.swift */; };
 		2E48ACFE1C34406900E59DE5 /* StringArrayConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48ACFD1C34406900E59DE5 /* StringArrayConvertible.swift */; };
@@ -41,6 +43,8 @@
 /* Begin PBXFileReference section */
 		0BEC1DB61212211B97ADD223 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		2240963FAC3B4D9CFA21CF6C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2E0E9A821C34976000CB2B8A /* DuckDuckGoSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DuckDuckGoSearchController.swift; sourceTree = "<group>"; };
+		2E0E9A841C3498F600CB2B8A /* ImageSearchResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageSearchResult.swift; sourceTree = "<group>"; };
 		2E48ACF81C342E7300E59DE5 /* StarWarsSpecies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarWarsSpecies.swift; sourceTree = "<group>"; };
 		2E48ACFA1C34303200E59DE5 /* SpeciesWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeciesWrapper.swift; sourceTree = "<group>"; };
 		2E48ACFD1C34406900E59DE5 /* StringArrayConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringArrayConvertible.swift; sourceTree = "<group>"; };
@@ -124,7 +128,9 @@
 		2E48ACFC1C34405E00E59DE5 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				2E0E9A841C3498F600CB2B8A /* ImageSearchResult.swift */,
 				2E48ACFD1C34406900E59DE5 /* StringArrayConvertible.swift */,
+				2E0E9A821C34976000CB2B8A /* DuckDuckGoSearchController.swift */,
 			);
 			name = Util;
 			sourceTree = "<group>";
@@ -375,7 +381,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E0E9A831C34976000CB2B8A /* DuckDuckGoSearchController.swift in Sources */,
 				2E48AD001C3440BD00E59DE5 /* DetailViewController.swift in Sources */,
+				2E0E9A851C3498F600CB2B8A /* ImageSearchResult.swift in Sources */,
 				2E48ACFB1C34303200E59DE5 /* SpeciesWrapper.swift in Sources */,
 				2E48ACF91C342E7300E59DE5 /* StarWarsSpecies.swift in Sources */,
 				2E48ACFE1C34406900E59DE5 /* StringArrayConvertible.swift in Sources */,
