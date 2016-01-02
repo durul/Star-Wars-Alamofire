@@ -36,3 +36,5 @@ Twitter: https://www.twitter.com/duruldalkanat
 Blog: http://dumobility.tumblr.com/
 
 Github: https://github.com/durul
+
+special thanks to Grok Swift
