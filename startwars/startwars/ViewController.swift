@@ -8,15 +8,20 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
 
+    //None searchbar controllers array
     var species:Array<StarWarsSpecies>?
-    var speciesWrapper:SpeciesWrapper? // holds the last wrapper that we've loaded
+    var speciesWrapper:SpeciesWrapper? // holds the last wrapper that we've loaded.
     var isLoadingSpecies = false
 
-    //Create a dictionary to hold the images indexed by the species names
+    //Create a dictionary to hold the images indexed by the species names.
     var imageCache = Dictionary<String, ImageSearchResult>()
 
+    //Add an array to viewcontroller to hold the search results.
+    var speciesSearchResults:Array<StarWarsSpecies>?
+
+    
     @IBOutlet weak var tableview: UITableView?
     
     // MARK: Lifecycle
@@ -27,35 +32,60 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.tableview?.contentInset = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0);
         
         self.loadFirstSpecies()
+        
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-    //MARK: Customizing the Table View
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.species == nil
-        {
-            return 0
-        }
-        return self.species!.count
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Add a background view to the table view
+        let backgroundImage = UIImage(named: "Background")
+        let imageView = UIImageView(image: backgroundImage)
+        self.tableview!.backgroundView = imageView
+        
+        // Adding a Blur Effect
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        let blurView = UIVisualEffectView(effect: blurEffect)
+        blurView.frame = imageView.bounds
+        imageView.addSubview(blurView)
     }
     
 
+
+    //MARK: Customizing the Table View
+    
+    // Displaying Search Results
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == self.searchDisplayController?.searchResultsTableView {
+            return self.speciesSearchResults?.count ?? 0
+        } else {
+            return self.species?.count ?? 0
+        }
+    }
+
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        let cell = self.tableview!.dequeueReusableCellWithIdentifier("Cell")! as UITableViewCell
         
-        if self.species != nil && self.species!.count >= indexPath.row  {
-            let species = self.species![indexPath.row]
-            
+        var arrayOfSpecies:Array<StarWarsSpecies>?
+        if tableView == self.searchDisplayController!.searchResultsTableView {
+            arrayOfSpecies = self.speciesSearchResults
+        } else {
+            arrayOfSpecies = self.species
+        }
+        
+        if arrayOfSpecies != nil && arrayOfSpecies!.count >= indexPath.row
+        {
+            let species = arrayOfSpecies![indexPath.row]
             cell.textLabel?.text = species.name
-            
             cell.detailTextLabel?.text = " " // if it's empty or nil it won't update correctly in iOS 8, see http://stackoverflow.com/questions/25793074/subtitles-of-uitableviewcell-wont-update
             cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
-            
             cell.imageView?.image = nil
+            
             
             // Caching Images
             if let name = species.name {
@@ -92,12 +122,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
             
             // See if we need to load more species
-            if self.species != nil && self.species!.count >= indexPath.row
-            {
-                let species = self.species![indexPath.row]
-                cell.textLabel?.text = species.name
-                cell.detailTextLabel?.text = species.classification
-                
+            if tableView != self.searchDisplayController!.searchResultsTableView {
                 // See if we need to load more species
                 let rowsToLoadFromBottom = 5;
                 let rowsLoaded = self.species!.count
@@ -177,24 +202,85 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row % 2 == 0
-        {
-            cell.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0) // very light gray
-        }
-        else
-        {
-            cell.backgroundColor = UIColor.whiteColor()
-        }
+//        if indexPath.row % 2 == 0
+//        {
+//            cell.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0) // very light gray
+//        }
+//        else
+//        {
+//            cell.backgroundColor = UIColor.whiteColor()
+//        }
+        
+        //cell.backgroundColor = .clearColor()
+        
+        cell.backgroundColor = UIColor(white: 1, alpha: 0.5)
+
     }
     
-    // MARK: Navigation
+    // MARK: Navigation & Segues from Search Results
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         super.prepareForSegue(segue, sender: sender)
-        if let speciesDetailVC = segue.destinationViewController as? DetailViewController {
-            if let indexPath = self.tableview?.indexPathForSelectedRow {
-                speciesDetailVC.species = self.species?[indexPath.row]
+        if let speciesDetailVC = segue.destinationViewController as? DetailViewController
+        {
+            // gotta check if we're currently searching
+            if self.searchDisplayController!.active {
+                let indexPath = self.searchDisplayController?.searchResultsTableView.indexPathForSelectedRow
+                if indexPath != nil {
+                    speciesDetailVC.species = self.speciesSearchResults?[indexPath!.row]
+                }
+            } else {
+                let indexPath = self.tableview?.indexPathForSelectedRow!
+                if indexPath != nil {
+                    speciesDetailVC.species = self.species?[indexPath!.row]
                 }
             }
         }
+    }
+    
+    // MARK: Search Filter & Search Scope
+    func filterContentForSearchText(searchText: String, scope: Int) {
+        // Filter the array using the filter method
+        if self.species == nil {
+            self.speciesSearchResults = nil
+            return
+        }
+        
+        // Using lowercaseString on both the species name and the search text makes the search case insensitive.
+        self.speciesSearchResults = self.species!.filter({( aSpecies: StarWarsSpecies) -> Bool in
+            // pick the field to search
+            var fieldToSearch: String?
+            switch (scope) {
+            case (0):
+                fieldToSearch = aSpecies.name
+            case (1):
+                fieldToSearch = aSpecies.language
+            case (2):
+                fieldToSearch = aSpecies.classification
+            default:
+                fieldToSearch = nil
+            }
+            if fieldToSearch == nil {
+                self.speciesSearchResults = nil
+                return false
+            }
+            return fieldToSearch!.lowercaseString.rangeOfString(searchText.lowercaseString) != nil
+        })
+    }
+    
+    // The function to handle changes to the search string is searchDisplayController:shouldReloadTableForSearchString
+    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchString searchString: String?) -> Bool {
+        //Adjust our filter function to use the scope
+        let selectedIndex = controller.searchBar.selectedScopeButtonIndex
+        self.filterContentForSearchText(searchString!, scope: selectedIndex)
+        return true
+    }
+    
+    //The search should also reload when the scope changes, not just when the search text changes.
+    func searchDisplayController(controller: UISearchDisplayController, shouldReloadTableForSearchScope searchOption: Int) -> Bool {
+        let searchString = controller.searchBar.text
+        self.filterContentForSearchText(searchString!, scope:searchOption)
+        return true
+    }
+    
 }
 
