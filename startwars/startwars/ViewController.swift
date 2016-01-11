@@ -28,6 +28,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let scrollOptionsButton = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "showScrollOptions")
+        self.navigationItem.rightBarButtonItem = scrollOptionsButton
+        
         // place tableview below status bar, cuz I think it's prettier that way
         self.tableview?.contentInset = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0);
         
@@ -282,5 +286,68 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return true
     }
     
+    //MARK: Programmatic UITableView Scrolling
+    func showScrollOptions() {
+        
+        let sheet = UIAlertController(title: "Where to", message: "Where would you like to scroll to?", preferredStyle: .ActionSheet)
+        
+        // Cancel
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler:{ (alert: UIAlertAction) in
+            self.dismissViewControllerAnimated(true, completion: nil)
+        });
+        sheet.addAction(cancelAction)
+        
+        // Scroll to Top
+        let firstRowAction = UIAlertAction(title: "First Row", style: UIAlertActionStyle.Default, handler:{ (alert: UIAlertAction) in
+            self.scrollToFirstRow()
+            self.dismissViewControllerAnimated(true, completion: nil)
+        });
+        sheet.addAction(firstRowAction)
+        
+        // Last Row
+        let lastRowAction = UIAlertAction(title: "Last Row", style: UIAlertActionStyle.Default, handler:{ (alert: UIAlertAction) in
+            self.scrollToLastRow()
+            self.dismissViewControllerAnimated(true, completion: nil)
+        });
+        sheet.addAction(lastRowAction)
+        
+        // Selected Row
+        let selectedRowAction = UIAlertAction(title: "Selected Row", style: UIAlertActionStyle.Default, handler:{ (alert: UIAlertAction) in
+            self.scrollToSelectedRow()
+            self.dismissViewControllerAnimated(true, completion: nil)
+        });
+        sheet.addAction(selectedRowAction)
+        
+        // Above Header
+        let topAction = UIAlertAction(title: "Header", style: UIAlertActionStyle.Default, handler:{ (alert: UIAlertAction) in
+            self.scrollToHeader()
+            self.dismissViewControllerAnimated(true, completion: nil)
+        });
+        sheet.addAction(topAction)
+        
+        self.presentViewController(sheet, animated: true, completion: nil)
+    }
+    
+    //scrollToRowAtIndexPath takes an NSIndexPath which is a way of giving a location in a set of nested arrays
+    func scrollToFirstRow() {
+        let indexPath = NSIndexPath(forRow: 0, inSection: 0)
+        self.tableview?.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Top, animated: true)
+    }
+    
+    func scrollToLastRow() {
+        let indexPath = NSIndexPath(forRow: species!.count - 1, inSection: 0)
+        self.tableview?.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Bottom, animated: true)
+    }
+    
+    func scrollToSelectedRow() {
+        let selectedRows = self.tableview?.indexPathsForSelectedRows
+        if let selectedRow = selectedRows![0] as? NSIndexPath {
+            self.tableview?.scrollToRowAtIndexPath(selectedRow, atScrollPosition: .Middle, animated: true)
+        }
+    }
+    
+    func scrollToHeader() {
+        self.tableview?.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: true)
+    }
 }
 
