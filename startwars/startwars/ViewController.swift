@@ -86,10 +86,14 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         {
             let species = arrayOfSpecies![indexPath.row]
             cell.textLabel?.text = species.name
+            
             cell.detailTextLabel?.text = " " // if it's empty or nil it won't update correctly in iOS 8, see http://stackoverflow.com/questions/25793074/subtitles-of-uitableviewcell-wont-update
             cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
+
             cell.imageView?.image = nil
-            
+            cell.imageView!.layer.masksToBounds = true
+            cell.imageView!.layer.cornerRadius = 5
+
             
             // Caching Images
             if let name = species.name {
