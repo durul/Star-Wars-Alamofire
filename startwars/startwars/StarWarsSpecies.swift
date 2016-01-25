@@ -220,12 +220,17 @@ class StarWarsSpecies {
                     print(json)
                 let results = json["results"]
                     print(results)
+                
+                autoreleasepool
+                {
+
                 for jsonSpecies in results
                 {
                   print(jsonSpecies.1)
                     let species = StarWarsSpecies(json: jsonSpecies.1, id: Int(jsonSpecies.0))
                     allSpecies.append(species)
                 }
+                    }
                 wrapper.species = allSpecies
                     return .Success(wrapper)
                 case .Failure(let error):
