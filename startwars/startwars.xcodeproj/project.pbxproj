@@ -13,6 +13,7 @@
 		2E48ACFB1C34303200E59DE5 /* SpeciesWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48ACFA1C34303200E59DE5 /* SpeciesWrapper.swift */; };
 		2E48ACFE1C34406900E59DE5 /* StringArrayConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48ACFD1C34406900E59DE5 /* StringArrayConvertible.swift */; };
 		2E48AD001C3440BD00E59DE5 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E48ACFF1C3440BD00E59DE5 /* DetailViewController.swift */; };
+		2E911BF11C56A764003BB91D /* Licensed Swift File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E911BF01C56A764003BB91D /* Licensed Swift File.swift */; };
 		2EBE481B1C497CED00F811A5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBE481A1C497CED00F811A5 /* Theme.swift */; };
 		2EE6305A1C342A7800FF2820 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE630591C342A7800FF2820 /* AppDelegate.swift */; };
 		2EE6305C1C342A7800FF2820 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE6305B1C342A7800FF2820 /* ViewController.swift */; };
@@ -50,6 +51,7 @@
 		2E48ACFA1C34303200E59DE5 /* SpeciesWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeciesWrapper.swift; sourceTree = "<group>"; };
 		2E48ACFD1C34406900E59DE5 /* StringArrayConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringArrayConvertible.swift; sourceTree = "<group>"; };
 		2E48ACFF1C3440BD00E59DE5 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		2E911BF01C56A764003BB91D /* Licensed Swift File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Licensed Swift File.swift"; sourceTree = "<group>"; };
 		2EBE481A1C497CED00F811A5 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		2EE630561C342A7800FF2820 /* startwars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = startwars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EE630591C342A7800FF2820 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 		2EE6304D1C342A7800FF2820 = {
 			isa = PBXGroup;
 			children = (
+				2E911BF01C56A764003BB91D /* Licensed Swift File.swift */,
 				2EE630581C342A7800FF2820 /* startwars */,
 				2EE6306D1C342A7800FF2820 /* startwarsTests */,
 				2EE630781C342A7800FF2820 /* startwarsUITests */,
@@ -400,6 +403,7 @@
 				2E48ACF91C342E7300E59DE5 /* StarWarsSpecies.swift in Sources */,
 				2E48ACFE1C34406900E59DE5 /* StringArrayConvertible.swift in Sources */,
 				2EE6305C1C342A7800FF2820 /* ViewController.swift in Sources */,
+				2E911BF11C56A764003BB91D /* Licensed Swift File.swift in Sources */,
 				2EE6305A1C342A7800FF2820 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

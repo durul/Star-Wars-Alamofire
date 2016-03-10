@@ -9,6 +9,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Eureka.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -22,17 +27,22 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>0195E94A2DDA62F2F7E209B833C0D5F4</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>31EF08F3444DCD2B169D92269C5BCD3D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>432ECC54282C84882B482CCB4CF227FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8972D1B3785A7CF11C5D31FB702BCB0E</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>EA5783E1E72DAF034F5567D9F2721A2E</key>
+		<key>D8E19533CCBE329B1DAD8FC4F0BAA049</key>
 		<dict>
 			<key>primary</key>
 			<true/>
