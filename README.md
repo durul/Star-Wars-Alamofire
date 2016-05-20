@@ -12,13 +12,13 @@
 
 Requirements
 -------------------------------------------------
-Xcode 7.1
+Xcode 7.3
 
-Swift 2.1
+Swift 2.3
 
-Deployment Target = iOS 9.2
+Deployment Target = iOS 9.3
 
-Base SDK = iOS 9.2
+Base SDK = iOS 9.3
 
 Asset Credits
 -------------------------------------------------
@@ -37,4 +37,3 @@ Blog: http://dumobility.tumblr.com/
 
 Github: https://github.com/durul
 
-special thanks to Grok Swift
