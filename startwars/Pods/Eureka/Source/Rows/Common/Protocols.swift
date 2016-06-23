@@ -1,7 +1,7 @@
-//  RowControllerType.swift
+//  Protocols.swift
 //  Eureka ( https://github.com/xmartlabs/Eureka )
 //
-//  Copyright (c) 2016 Xmartlabs ( http://xmartlabs.com )
+//  Copyright (c) 2016 Xmartlabs SRL ( http://xmartlabs.com )
 //
 //
 // Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,15 +22,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-
 import Foundation
 
+public protocol FormatterConformance: class {
+    var formatter: NSFormatter? { get set }
+    var useFormatterDuringInput: Bool { get set }
+    var useFormatterOnDidBeginEditing: Bool? { get set }
+}
 
-/**
- *  Base protocol for view controllers presented by Eureka rows.
- */
-public protocol RowControllerType : NSObjectProtocol {
-    
-    /// A closure to be called when the controller disappears.
-    var completionCallback : ((UIViewController) -> ())? { get set }
+public protocol NoValueDisplayTextConformance: class {
+    var noValueDisplayText: String? { get set }
 }
