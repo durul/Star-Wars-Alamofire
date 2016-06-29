@@ -34,10 +34,20 @@ extension Alamofire.Request {
 			switch result {
 			case .Success(let value):
 				let json = SwiftyJSON.JSON(value)
+				
+				// check for "message" errors in the JSON
+				// After we successfully retrieve the JSON we need to check for for an error message passed by the API in the "message" field.
+				if let errorMessage = json["message"].string {
+					let error = Error.errorWithCode(.DataSerializationFailed,
+						failureReason: errorMessage)
+					return .Failure(error)
+				}
+				
 				let wrapper = SpeciesWrapper()
 				
-				// And we grab the relevant values from the JSON to fill in the wrapper’s properties:
-				// stringValue and intValue try to convert the JSON elements to strings or ints.
+				// And we grab the relevant values from the JSON to fill in the wrapper’s properties: stringValue and intValue try to convert the JSON elements to strings or ints.
+				
+				// next is load more function from api.
 				wrapper.next = json["next"].stringValue
 				wrapper.previous = json["previous"].stringValue
 				wrapper.count = json["count"].intValue

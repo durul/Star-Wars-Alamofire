@@ -120,8 +120,8 @@
 		2E48ACF61C342E5000E59DE5 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				2E48ACFF1C3440BD00E59DE5 /* DetailViewController.swift */,
 				2EE6305B1C342A7800FF2820 /* ViewController.swift */,
+				2E48ACFF1C3440BD00E59DE5 /* DetailViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
