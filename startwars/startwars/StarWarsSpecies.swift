@@ -48,8 +48,8 @@ class StarWarsSpecies {
 	var language: String?
 	var people: Array<String>?
 	var films: Array<String>?
-	var created: NSDate?
-	var edited: NSDate?
+	var created: Date?
+	var edited: Date?
 	var url: String?
 	
 	required init(json: JSON, id: Int?) {
@@ -116,19 +116,19 @@ class StarWarsSpecies {
 		let dateFormatter = StarWarsSpecies.dateFormatter()
 		if let dateString = json[SpeciesFields.Created.rawValue].string
 		{
-			self.created = dateFormatter.dateFromString(dateString)
+			self.created = dateFormatter.date(from: dateString)
 		}
 		if let dateString = json[SpeciesFields.Edited.rawValue].string
 		{
-			self.edited = dateFormatter.dateFromString(dateString)
+			self.edited = dateFormatter.date(from: dateString)
 		}
 		
 		self.averageHeight = json[SpeciesFields.AverageHeight.rawValue].int
 	}
 	
-	class func dateFormatter() -> NSDateFormatter {
+	class func dateFormatter() -> DateFormatter {
 		// create it
-		let aDateFormatter = NSDateFormatter()
+		let aDateFormatter = DateFormatter()
 		
 		// set the format as a text string
 		// we might get away with just doing this one line configuration for the date formatter
@@ -137,11 +137,11 @@ class StarWarsSpecies {
 		// but we if leave it at that then the user's settings for datetime & locale
 		// can mess it up. So:
 		// the 'Z' at the end means it's UTC (aka, Zulu time), so let's tell
-		aDateFormatter.timeZone = NSTimeZone(abbreviation: "UTC")
+		aDateFormatter.timeZone = TimeZone(abbreviation: "UTC")
 		
 		// dates coming from an english webserver are generally en_US_POSIX locale
 		// this would be different if your server spoke Spanish, Chinese, etc
-		aDateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+		aDateFormatter.locale = Locale(identifier: "en_US_POSIX")
 		
 		return aDateFormatter
 	}
@@ -155,23 +155,22 @@ class StarWarsSpecies {
 	 Getting & Processing the API Response
 	 ******************************************************************************/
 	
-	private class func getSpeciesAtPath(path: String, completionHandler: (SpeciesWrapper?, NSError?) -> Void) {
-		Alamofire.request(.GET, path)
-			.responseSpeciesArray { response in
+	fileprivate class func getSpeciesAtPath(_ path: String, completionHandler: @escaping (SpeciesWrapper?, NSError?) -> Void) {
+		Alamofire.request(path).responseSpeciesArray { response in
 				if let error = response.result.error
 				{
-					completionHandler(nil, error)
+					completionHandler(nil, error as NSError?)
 					return
 				}
 				completionHandler(response.result.value, nil)
 		}
 	}
 	
-	class func getSpecies(completionHandler: (SpeciesWrapper?, NSError?) -> Void) {
+	class func getSpecies(_ completionHandler: @escaping (SpeciesWrapper?, NSError?) -> Void) {
 		getSpeciesAtPath(StarWarsSpecies.endpointForSpecies(), completionHandler: completionHandler)
 	}
 	
-	class func getMoreSpecies(wrapper: SpeciesWrapper?, completionHandler: (SpeciesWrapper?, NSError?) -> Void) {
+	class func getMoreSpecies(_ wrapper: SpeciesWrapper?, completionHandler: @escaping (SpeciesWrapper?, NSError?) -> Void) {
 		if wrapper == nil || wrapper?.next == nil
 		{
 			completionHandler(nil, nil)

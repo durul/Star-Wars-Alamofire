@@ -12,35 +12,33 @@ import SwiftyJSON
 
 // MARK: ResponseSpeciesArray with its custom response serializer:
 // The data passes through a custom response serializer in responseSpeciesArray which parses the top layer of the JSON.
-extension Alamofire.Request {
-	func responseSpeciesArray(completionHandler: Response<SpeciesWrapper, NSError> -> Void) -> Self {
-		let responseSerializer = ResponseSerializer<SpeciesWrapper, NSError> { request, response, data, error in
+
+extension Alamofire.DataRequest {
+	func responseSpeciesArray(_ completionHandler: @escaping (DataResponse<SpeciesWrapper>) -> Void) -> Self {
+		let responseSerializer = DataResponseSerializer<SpeciesWrapper> { request, response, data, error in
 			
 			guard error == nil else {
-				return .Failure(error!)
+				return .failure(error!)
 			}
 			
 			guard let responseData = data else {
-				let failureReason = "Array could not be serialized because input data was nil."
-				let error = Error.errorWithCode(.DataSerializationFailed, failureReason: failureReason)
-				return .Failure(error)
+                return .failure(AFError.responseSerializationFailed(reason: .inputDataNil))
 			}
 			
 			// Request.JSONResponseSerializer to get the data as JSON
-			let JSONResponseSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
+            let JSONResponseSerializer = DataRequest.jsonResponseSerializer(options: .allowFragments)
 			let result = JSONResponseSerializer.serializeResponse(request, response, responseData, error)
 			
 			// The top layer contains only 4 elements: next, previous, count and results. Parsing the first 3 by using SwiftyJSON
 			switch result {
-			case .Success(let value):
+			case .success(let value):
 				let json = SwiftyJSON.JSON(value)
 				
 				// check for "message" errors in the JSON
 				// After we successfully retrieve the JSON we need to check for for an error message passed by the API in the "message" field.
-				if let errorMessage = json["message"].string {
-					let error = Error.errorWithCode(.DataSerializationFailed,
-						failureReason: errorMessage)
-					return .Failure(error)
+				if json["message"].string != nil {
+                    return .failure(AFError.responseSerializationFailed(reason: .inputDataNil))
+
 				}
 				
 				let wrapper = SpeciesWrapper()
@@ -69,13 +67,12 @@ extension Alamofire.Request {
 					}
 				}
 				wrapper.species = allSpecies
-				return .Success(wrapper)
-			case .Failure(let error):
-				return .Failure(error)
+				return .success(wrapper)
+			case .failure(let error):
+				return .failure(error)
 			}
 		}
 		
-		return response(responseSerializer: responseSerializer,
-			completionHandler: completionHandler)
+		return response(responseSerializer: responseSerializer, completionHandler: completionHandler)
 	}
 }

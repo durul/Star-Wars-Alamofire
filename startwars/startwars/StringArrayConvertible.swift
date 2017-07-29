@@ -13,10 +13,10 @@ extension String {
   {
     var outputArray = Array<String>()
     
-    let components = self.componentsSeparatedByString(",")
+    let components = self.components(separatedBy: ",")
     for component in components
     {
-      let trimmedComponent = component.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+      let trimmedComponent = component.trimmingCharacters(in: CharacterSet.whitespaces)
       outputArray.append(trimmedComponent)
     }
     

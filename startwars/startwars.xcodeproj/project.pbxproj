@@ -21,27 +21,8 @@
 		2EE6305F1C342A7800FF2820 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EE6305D1C342A7800FF2820 /* Main.storyboard */; };
 		2EE630611C342A7800FF2820 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2EE630601C342A7800FF2820 /* Assets.xcassets */; };
 		2EE630641C342A7800FF2820 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EE630621C342A7800FF2820 /* LaunchScreen.storyboard */; };
-		2EE6306F1C342A7800FF2820 /* startwarsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE6306E1C342A7800FF2820 /* startwarsTests.swift */; };
-		2EE6307A1C342A7800FF2820 /* startwarsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE630791C342A7800FF2820 /* startwarsUITests.swift */; };
 		EF14993C6BD88A02D1DD8A56 /* Pods_startwars.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 341CC056C27A66942F746587 /* Pods_startwars.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		2EE6306B1C342A7800FF2820 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2EE6304E1C342A7800FF2820 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2EE630551C342A7800FF2820;
-			remoteInfo = startwars;
-		};
-		2EE630761C342A7800FF2820 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2EE6304E1C342A7800FF2820 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2EE630551C342A7800FF2820;
-			remoteInfo = startwars;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		2240963FAC3B4D9CFA21CF6C /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -55,16 +36,14 @@
 		2E911BF01C56A764003BB91D /* Licensed Swift File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Licensed Swift File.swift"; sourceTree = "<group>"; };
 		2EBE481A1C497CED00F811A5 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		2EE630561C342A7800FF2820 /* startwars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = startwars.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		2EE630591C342A7800FF2820 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		2EE630591C342A7800FF2820 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = startwars/AppDelegate.swift; sourceTree = "<group>"; };
 		2EE6305B1C342A7800FF2820 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		2EE6305E1C342A7800FF2820 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2EE630601C342A7800FF2820 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2EE630631C342A7800FF2820 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2EE630651C342A7800FF2820 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2EE6306A1C342A7800FF2820 /* startwarsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = startwarsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EE6306E1C342A7800FF2820 /* startwarsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startwarsTests.swift; sourceTree = "<group>"; };
 		2EE630701C342A7800FF2820 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2EE630751C342A7800FF2820 /* startwarsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = startwarsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EE630791C342A7800FF2820 /* startwarsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = startwarsUITests.swift; sourceTree = "<group>"; };
 		2EE6307B1C342A7800FF2820 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		341CC056C27A66942F746587 /* Pods_startwars.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_startwars.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,20 +57,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF14993C6BD88A02D1DD8A56 /* Pods_startwars.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2EE630671C342A7800FF2820 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2EE630721C342A7800FF2820 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,6 +120,7 @@
 		2EE6304D1C342A7800FF2820 = {
 			isa = PBXGroup;
 			children = (
+				2EE630591C342A7800FF2820 /* AppDelegate.swift */,
 				2E911BF01C56A764003BB91D /* Licensed Swift File.swift */,
 				2EE630581C342A7800FF2820 /* startwars */,
 				2EE6306D1C342A7800FF2820 /* startwarsTests */,
@@ -169,8 +135,6 @@
 			isa = PBXGroup;
 			children = (
 				2EE630561C342A7800FF2820 /* startwars.app */,
-				2EE6306A1C342A7800FF2820 /* startwarsTests.xctest */,
-				2EE630751C342A7800FF2820 /* startwarsUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -183,7 +147,6 @@
 				2E48ACF71C342E5700E59DE5 /* View */,
 				2E48ACF61C342E5000E59DE5 /* Controller */,
 				2E48ACF51C342E4B00E59DE5 /* Model */,
-				2EE630591C342A7800FF2820 /* AppDelegate.swift */,
 				2EE630601C342A7800FF2820 /* Assets.xcassets */,
 				2EE630621C342A7800FF2820 /* LaunchScreen.storyboard */,
 				2EE630651C342A7800FF2820 /* Info.plist */,
@@ -225,12 +188,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2EE6307E1C342A7800FF2820 /* Build configuration list for PBXNativeTarget "startwars" */;
 			buildPhases = (
-				6AE9165668D9FAE08682B52F /* 📦 Check Pods Manifest.lock */,
+				6AE9165668D9FAE08682B52F /* [CP] Check Pods Manifest.lock */,
 				2EE630521C342A7800FF2820 /* Sources */,
 				2EE630531C342A7800FF2820 /* Frameworks */,
 				2EE630541C342A7800FF2820 /* Resources */,
-				AE8E068A1463CE30B5C3CE9D /* 📦 Embed Pods Frameworks */,
-				39F8EF46CBA5D98C6EA72D66 /* 📦 Copy Pods Resources */,
+				AE8E068A1463CE30B5C3CE9D /* [CP] Embed Pods Frameworks */,
+				39F8EF46CBA5D98C6EA72D66 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -241,42 +204,6 @@
 			productReference = 2EE630561C342A7800FF2820 /* startwars.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2EE630691C342A7800FF2820 /* startwarsTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2EE630811C342A7800FF2820 /* Build configuration list for PBXNativeTarget "startwarsTests" */;
-			buildPhases = (
-				2EE630661C342A7800FF2820 /* Sources */,
-				2EE630671C342A7800FF2820 /* Frameworks */,
-				2EE630681C342A7800FF2820 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2EE6306C1C342A7800FF2820 /* PBXTargetDependency */,
-			);
-			name = startwarsTests;
-			productName = startwarsTests;
-			productReference = 2EE6306A1C342A7800FF2820 /* startwarsTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		2EE630741C342A7800FF2820 /* startwarsUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 2EE630841C342A7800FF2820 /* Build configuration list for PBXNativeTarget "startwarsUITests" */;
-			buildPhases = (
-				2EE630711C342A7800FF2820 /* Sources */,
-				2EE630721C342A7800FF2820 /* Frameworks */,
-				2EE630731C342A7800FF2820 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				2EE630771C342A7800FF2820 /* PBXTargetDependency */,
-			);
-			name = startwarsUITests;
-			productName = startwarsUITests;
-			productReference = 2EE630751C342A7800FF2820 /* startwarsUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -284,19 +211,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "durul dalkanat";
 				TargetAttributes = {
 					2EE630551C342A7800FF2820 = {
 						CreatedOnToolsVersion = 7.2;
-					};
-					2EE630691C342A7800FF2820 = {
-						CreatedOnToolsVersion = 7.2;
-						TestTargetID = 2EE630551C342A7800FF2820;
-					};
-					2EE630741C342A7800FF2820 = {
-						CreatedOnToolsVersion = 7.2;
-						TestTargetID = 2EE630551C342A7800FF2820;
+						DevelopmentTeam = MVFU2L7FRK;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -314,8 +235,6 @@
 			projectRoot = "";
 			targets = (
 				2EE630551C342A7800FF2820 /* startwars */,
-				2EE630691C342A7800FF2820 /* startwarsTests */,
-				2EE630741C342A7800FF2820 /* startwarsUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -331,31 +250,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2EE630681C342A7800FF2820 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2EE630731C342A7800FF2820 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		39F8EF46CBA5D98C6EA72D66 /* 📦 Copy Pods Resources */ = {
+		39F8EF46CBA5D98C6EA72D66 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -363,29 +268,29 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-startwars/Pods-startwars-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		6AE9165668D9FAE08682B52F /* 📦 Check Pods Manifest.lock */ = {
+		6AE9165668D9FAE08682B52F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		AE8E068A1463CE30B5C3CE9D /* 📦 Embed Pods Frameworks */ = {
+		AE8E068A1463CE30B5C3CE9D /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -414,36 +319,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2EE630661C342A7800FF2820 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2EE6306F1C342A7800FF2820 /* startwarsTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		2EE630711C342A7800FF2820 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2EE6307A1C342A7800FF2820 /* startwarsUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		2EE6306C1C342A7800FF2820 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2EE630551C342A7800FF2820 /* startwars */;
-			targetProxy = 2EE6306B1C342A7800FF2820 /* PBXContainerItemProxy */;
-		};
-		2EE630771C342A7800FF2820 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 2EE630551C342A7800FF2820 /* startwars */;
-			targetProxy = 2EE630761C342A7800FF2820 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		2EE6305D1C342A7800FF2820 /* Main.storyboard */ = {
@@ -478,8 +354,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -501,7 +379,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = (
@@ -509,8 +387,9 @@
 					"-Xfrontend",
 					"-debug-time-function-bodies",
 				);
+				OTHER_SWIFT_FLAGS = "-Onone";
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Debug;
 		};
@@ -527,8 +406,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -544,7 +425,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -552,6 +433,7 @@
 					"-debug-time-function-bodies",
 				);
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -560,11 +442,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D795F8451BD3DC11B6BCFD64 /* Pods-startwars.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MVFU2L7FRK;
 				INFOPLIST_FILE = startwars/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = com.durul.startwars;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -572,59 +458,15 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 977DFF7C616D4D5C1D0D5264 /* Pods-startwars.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = MVFU2L7FRK;
 				INFOPLIST_FILE = startwars/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"COCOAPODS\" -Xfrontend -debug-time-function-bodies";
 				PRODUCT_BUNDLE_IDENTIFIER = com.durul.startwars;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		2EE630821C342A7800FF2820 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = startwarsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.durul.startwarsTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/startwars.app/startwars";
-			};
-			name = Debug;
-		};
-		2EE630831C342A7800FF2820 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = startwarsTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.durul.startwarsTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/startwars.app/startwars";
-			};
-			name = Release;
-		};
-		2EE630851C342A7800FF2820 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = startwarsUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.durul.startwarsUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = startwars;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		2EE630861C342A7800FF2820 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = startwarsUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.durul.startwarsUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = startwars;
-				USES_XCTRUNNER = YES;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -645,24 +487,6 @@
 			buildConfigurations = (
 				2EE6307F1C342A7800FF2820 /* Debug */,
 				2EE630801C342A7800FF2820 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2EE630811C342A7800FF2820 /* Build configuration list for PBXNativeTarget "startwarsTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2EE630821C342A7800FF2820 /* Debug */,
-				2EE630831C342A7800FF2820 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		2EE630841C342A7800FF2820 /* Build configuration list for PBXNativeTarget "startwarsUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2EE630851C342A7800FF2820 /* Debug */,
-				2EE630861C342A7800FF2820 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
