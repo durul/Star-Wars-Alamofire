@@ -16,6 +16,7 @@
 - Deselection animation for tableview
 - Programmatically UITableView scrolling
 - [Custom ThemeManager](https://github.com/durul/DRL-Theme-Manager)
+- [Custom Refresher](https://github.com/jcavar/refresher)
 
 
 ## Requirements

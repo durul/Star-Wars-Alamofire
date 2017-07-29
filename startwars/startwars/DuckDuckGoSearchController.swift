@@ -28,8 +28,7 @@ class DuckDuckGoSearchController {
     class func imageFromSearchString(_ searchString: String, completionHandler: @escaping (ImageSearchResult?, NSError?) -> Void) {
         
         let searchURLString = endpointForSearchString(searchString)
-        Alamofire.request(searchURLString)
-            .responseDuckDuckGoImageURL { response in
+        Alamofire.request(searchURLString).responseDuckDuckGoImageURL { response in
                 if let error = response.result.error
                 {
                     completionHandler(response.result.value, error as NSError?)

@@ -16,6 +16,7 @@
 		2E88BBC41D1AF2400018C946 /* AlamofireRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E88BBC31D1AF2400018C946 /* AlamofireRequest.swift */; };
 		2E911BF11C56A764003BB91D /* Licensed Swift File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E911BF01C56A764003BB91D /* Licensed Swift File.swift */; };
 		2EBE481B1C497CED00F811A5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBE481A1C497CED00F811A5 /* Theme.swift */; };
+		2EC8C1C81F2C244000B69538 /* BeatAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EC8C1C71F2C244000B69538 /* BeatAnimator.swift */; };
 		2EE6305A1C342A7800FF2820 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE630591C342A7800FF2820 /* AppDelegate.swift */; };
 		2EE6305C1C342A7800FF2820 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE6305B1C342A7800FF2820 /* ViewController.swift */; };
 		2EE6305F1C342A7800FF2820 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2EE6305D1C342A7800FF2820 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 		2E88BBC31D1AF2400018C946 /* AlamofireRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireRequest.swift; sourceTree = "<group>"; };
 		2E911BF01C56A764003BB91D /* Licensed Swift File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Licensed Swift File.swift"; sourceTree = "<group>"; };
 		2EBE481A1C497CED00F811A5 /* Theme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		2EC8C1C71F2C244000B69538 /* BeatAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BeatAnimator.swift; sourceTree = "<group>"; };
 		2EE630561C342A7800FF2820 /* startwars.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = startwars.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2EE630591C342A7800FF2820 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = startwars/AppDelegate.swift; sourceTree = "<group>"; };
 		2EE6305B1C342A7800FF2820 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 		2E48ACFC1C34405E00E59DE5 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				2EC8C1C71F2C244000B69538 /* BeatAnimator.swift */,
 				2E0E9A841C3498F600CB2B8A /* ImageSearchResult.swift */,
 				2E48ACFD1C34406900E59DE5 /* StringArrayConvertible.swift */,
 				2E0E9A821C34976000CB2B8A /* DuckDuckGoSearchController.swift */,
@@ -309,6 +312,7 @@
 				2E0E9A831C34976000CB2B8A /* DuckDuckGoSearchController.swift in Sources */,
 				2E88BBC41D1AF2400018C946 /* AlamofireRequest.swift in Sources */,
 				2E48AD001C3440BD00E59DE5 /* DetailViewController.swift in Sources */,
+				2EC8C1C81F2C244000B69538 /* BeatAnimator.swift in Sources */,
 				2E0E9A851C3498F600CB2B8A /* ImageSearchResult.swift in Sources */,
 				2E48ACFB1C34303200E59DE5 /* SpeciesWrapper.swift in Sources */,
 				2E48ACF91C342E7300E59DE5 /* StarWarsSpecies.swift in Sources */,

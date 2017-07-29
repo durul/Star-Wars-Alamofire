@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Refresher
 
     //MARK: - Private Methods
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
@@ -21,7 +20,6 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
         return false
     }
 }
-
 
     //MARK: - UIViewController Properties
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
@@ -49,10 +47,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         self.navigationItem.rightBarButtonItem = scrollOptionsButton
 
         // place tableview below status bar, cuz I think it's prettier that way
-        self.tableview?.contentInset = UIEdgeInsetsMake(20.0, 0.0, 0.0, 0.0);
+        self.tableview?.contentInset = UIEdgeInsetsMake(-64.0, 0.0, 0.0, 0.0);
 
-        self.loadFirstSpecies()
-
+        loadFirstSpecies()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -72,6 +69,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let blurView = UIVisualEffectView(effect: blurEffect)
         blurView.frame = imageView.bounds
         imageView.addSubview(blurView)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        tableview?.startPullToRefresh()
+    }
+
+    func refresher() {
+        let beatAnimator = BeatAnimator(frame: CGRect(x: 0, y: 0, width: 320, height: 5))
+        tableview?.addPullToRefreshWithAction({
+            OperationQueue().addOperation {
+                sleep(2)
+                OperationQueue.main.addOperation {
+                    self.tableview?.stopPullToRefresh()
+                }
+            }
+        }, withAnimator: beatAnimator)
     }
 
     // MARK: Customizing the Table View
@@ -186,6 +200,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     func loadMoreSpecies() {
         self.isLoadingSpecies = true
+        refresher()
         if self.species != nil && self.speciesWrapper != nil && self.species.count < self.speciesWrapper!.count
         {
             // there are more species out there!
@@ -345,7 +360,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let indexPath = IndexPath(row: 0, section: 0)
         self.tableview?.scrollToRow(at: indexPath, at: .top, animated: true)
     }
-    
+
     func scrollToLastRow() {
         let indexPath = IndexPath(row: species.count - 1, section: 0)
         self.tableview?.scrollToRow(at: indexPath, at: .bottom, animated: true)
@@ -360,6 +375,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func scrollToHeader() {
         self.tableview?.scrollRectToVisible(CGRect(x: 0, y: 0, width: 1, height: 1), animated: true)
+        refresher()
     }
+
 }
 
