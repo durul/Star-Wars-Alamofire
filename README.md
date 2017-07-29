@@ -1,3 +1,7 @@
+<p align="center" >
+  <img src="https://github.com/durul/Star-Wars-Alamofire/blob/master/star-wars.png" width=600px height=362px alt="Starwars" title="Starwars">
+</p>
+
 # Startwars Species Catalog
 -------------------------------------------------
 
@@ -15,7 +19,6 @@
 
 
 ## Requirements
--------------------------------------------------
 - Xcode 8.3
 - Swift 3.1+
 - Deployment Target = iOS 9.3
@@ -23,8 +26,6 @@
 
 
 ## API
--------------------------------------------------
-
 - The Starwars Database API: http://swapi.co/api/species/13/
 - Paw: https://luckymarmot.com/paw
 
@@ -44,7 +45,6 @@ Twitter: https://www.twitter.com/duruldalkanat
 
 
 ## License
-
 The MIT License (MIT)
 
 Copyright (c) 2017 Durul Dalkanat
