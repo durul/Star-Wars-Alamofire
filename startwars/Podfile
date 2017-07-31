@@ -6,6 +6,7 @@ target 'startwars' do
   pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :tag => '4.4.0'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
   pod 'Refresher'
+  pod 'AMScrollingNavbar'
 end
 
 post_install do |installer|

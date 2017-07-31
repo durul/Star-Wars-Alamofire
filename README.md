@@ -17,6 +17,7 @@
 - Programmatically UITableView scrolling
 - [Custom ThemeManager](https://github.com/durul/DRL-Theme-Manager)
 - [Custom Refresher](https://github.com/jcavar/refresher)
+- [Custom Navigation Controller](https://github.com/andreamazz/AMScrollingNavbar)
 
 
 ## Requirements

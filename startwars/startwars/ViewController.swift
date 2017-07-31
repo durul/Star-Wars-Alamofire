@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AMScrollingNavbar
 
     //MARK: - Private Methods
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
@@ -22,7 +23,7 @@ fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 }
 
     //MARK: - UIViewController Properties
-class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
+class ViewController: ScrollingNavigationViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate, UISearchDisplayDelegate {
 
     // None searchbar controllers array
     var species = [StarWarsSpecies]()
@@ -38,6 +39,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     //MARK: - IBOutlets
     @IBOutlet weak var tableview: UITableView?
+    @IBOutlet weak var searchBar: UISearchBar!
 
     //MARK: - Super Methods
     override func viewDidLoad() {
@@ -69,20 +71,39 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let blurView = UIVisualEffectView(effect: blurEffect)
         blurView.frame = imageView.bounds
         imageView.addSubview(blurView)
+
+        if let navigationController = navigationController as? ScrollingNavigationController {
+            navigationController.followScrollView(tableview!, delay: 50.0)
+        }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         tableview?.startPullToRefresh()
+
+        if let navigationController = self.navigationController as? ScrollingNavigationController {
+            navigationController.followScrollView(tableview!, delay: 0.0, followers: [])
+            navigationController.scrollingNavbarDelegate = self
+        }
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+
+        if let navigationController = navigationController as? ScrollingNavigationController {
+            navigationController.stopFollowingScrollView()
+        }
     }
 
     func refresher() {
         let beatAnimator = BeatAnimator(frame: CGRect(x: 0, y: 0, width: 320, height: 5))
         tableview?.addPullToRefreshWithAction({
+            self.searchBar.isHidden = true
             OperationQueue().addOperation {
                 sleep(2)
                 OperationQueue.main.addOperation {
                     self.tableview?.stopPullToRefresh()
+                    self.searchBar.isHidden = false
                 }
             }
         }, withAnimator: beatAnimator)
@@ -380,3 +401,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
 }
 
+extension ViewController: ScrollingNavigationControllerDelegate {
+    func scrollingNavigationController(_ controller: ScrollingNavigationController, willChangeState state: NavigationBarState) {
+        view.needsUpdateConstraints()
+    }
+}

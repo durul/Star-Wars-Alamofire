@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Star Wars-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="startwars" customModuleProvider="target" sceneMemberID="viewController">
@@ -85,8 +85,9 @@
                             <constraint firstItem="tP6-nH-8He" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nRm-km-JIL"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="hXU-DG-N6j"/>
+                    <navigationItem key="navigationItem" title="Star Wars" id="hXU-DG-N6j"/>
                     <connections>
+                        <outlet property="searchBar" destination="tP6-nH-8He" id="Grm-6w-zhb"/>
                         <outlet property="searchDisplayController" destination="DHx-9W-35d" id="V9J-2j-Hb5"/>
                         <outlet property="tableview" destination="Zdv-ek-PJP" id="34t-Gt-8JH"/>
                     </connections>
@@ -141,10 +142,10 @@
             </objects>
             <point key="canvasLocation" x="349.5" y="378.5"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Scrolling Navigation Controller-->
         <scene sceneID="mfE-r3-ZAq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WUE-0w-3aZ" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="WUE-0w-3aZ" customClass="ScrollingNavigationController" customModule="AMScrollingNavbar" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Oh6-dm-eEy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
