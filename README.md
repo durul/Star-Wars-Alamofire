@@ -3,8 +3,9 @@
 </p>
 
 # Startwars Species Catalog
--------------------------------------------------
-
+![Platform](https://img.shields.io/badge/Platforms-iOS%20-lightgray.svg?style=flat)
+![Swift](https://img.shields.io/badge/%20in-swift%203.0-orange.svg)
+----
 - Pulled Star Wars species data from the Star Wars API using Alamofire
 - Used custom response serializers to process the JSON into an array of Swift objects
 - Parsed some string fields in the web service JSON with SwiftyJSON
@@ -21,8 +22,7 @@
 
 
 ## Requirements
-- Xcode 8.3
-- Swift 3.1+
+- Xcode 8.3+
 - Deployment Target = iOS 9.3
 - Base SDK = iOS 9.3
 
@@ -31,12 +31,6 @@
 - The Starwars Database API: http://swapi.co/api/species/13/
 - Paw: https://luckymarmot.com/paw
 
-
-## Requirements
-- Xcode 8.3.2
-- Swift 3.1+
-- Deployment Target = iOS 10.3
-- Base SDK = iOS 9.3
 
 ## Asset Credits
 Portfolio: http://durul.github.io
