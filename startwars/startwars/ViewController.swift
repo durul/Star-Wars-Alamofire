@@ -48,6 +48,9 @@ class ViewController: ScrollingNavigationViewController, UITableViewDataSource, 
         let scrollOptionsButton = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(ViewController.showScrollOptions))
         self.navigationItem.rightBarButtonItem = scrollOptionsButton
 
+        let scrollOptionsButton2 = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(ViewController.popUpScreen))
+        self.navigationItem.leftBarButtonItem = scrollOptionsButton2
+
         // place tableview below status bar, cuz I think it's prettier that way
         self.tableview?.contentInset = UIEdgeInsetsMake(-64.0, 0.0, 0.0, 0.0);
 
@@ -138,10 +141,6 @@ class ViewController: ScrollingNavigationViewController, UITableViewDataSource, 
             cell.detailTextLabel?.text = " " // if it's empty or nil it won't update correctly in iOS 8, see http://stackoverflow.com/questions/25793074/subtitles-of-uitableviewcell-wont-update
             cell.detailTextLabel?.adjustsFontSizeToFitWidth = true
 
-            cell.imageView?.image = nil
-            cell.imageView!.layer.masksToBounds = true
-            cell.imageView!.layer.cornerRadius = 22
-
             // Caching Images
             if let name = species.name {
                 // Before retrieving the image, it is checking the cache to see if we already have it.
@@ -149,6 +148,10 @@ class ViewController: ScrollingNavigationViewController, UITableViewDataSource, 
                 {
                     cell.imageView?.image = cachedImageResult.image // will work fine even if image is nil
                     cell.detailTextLabel?.text = cachedImageResult.fullAttribution()
+
+                    cell.imageView?.layer.cornerRadius = 20
+                    cell.imageView?.clipsToBounds = true
+                    cell.imageView?.contentMode = .scaleAspectFit
                 }
                 else
                 {
@@ -399,6 +402,12 @@ class ViewController: ScrollingNavigationViewController, UITableViewDataSource, 
         refresher()
     }
 
+
+    func popUpScreen() {
+        let popupVC = storyboard?.instantiateViewController(withIdentifier: "PopupVC") as! PopupVC
+        view.addSubview(popupVC.view)
+        addChildViewController(popupVC)
+    }
 }
 
 extension ViewController: ScrollingNavigationControllerDelegate {
