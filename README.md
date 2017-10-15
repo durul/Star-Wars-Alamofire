@@ -37,7 +37,9 @@ Portfolio: http://durul.github.io
 
 
 ## Support
-Twitter: https://www.twitter.com/duruldalkanat
+- Twitter: https://www.twitter.com/duruldalkanat
+- Star our GitHub repo ⭐️
+- Create pull requests, submit bugs, suggest new features or documentation updates 🔧
 
 
 ## License
