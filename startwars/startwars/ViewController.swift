@@ -52,7 +52,7 @@ class ViewController: ScrollingNavigationViewController, UITableViewDataSource, 
         self.navigationItem.leftBarButtonItem = scrollOptionsButton2
 
         // place tableview below status bar, cuz I think it's prettier that way
-        self.tableview?.contentInset = UIEdgeInsetsMake(-64.0, 0.0, 0.0, 0.0);
+        self.tableview?.contentInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
 
         loadFirstSpecies()
     }

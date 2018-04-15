@@ -3,7 +3,7 @@ platform :ios, '10.0'
 use_frameworks!
 
 target 'startwars' do
-  pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :tag => '4.4.0'
+  pod 'Alamofire'
   pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git'
   pod 'Refresher'
   pod 'AMScrollingNavbar'

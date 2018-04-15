@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '1C534519C55BA06F6144B954E5E7A9A7'
-               BlueprintName = 'Refresher'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Refresher.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9B7BEF22A2D2E5C2E4174836475BC47B"
+               BlueprintName = "AMScrollingNavbar"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "AMScrollingNavbar.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

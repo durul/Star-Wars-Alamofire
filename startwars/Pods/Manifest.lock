@@ -1,36 +1,36 @@
 PODS:
-  - Alamofire (4.4.0)
+  - Alamofire (4.5.0)
   - AMScrollingNavbar (3.4.0)
   - Refresher (0.6.1)
   - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
-  - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, tag `4.4.0`)
+  - Alamofire
   - AMScrollingNavbar
   - Refresher
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - AMScrollingNavbar
+    - Refresher
+
 EXTERNAL SOURCES:
-  Alamofire:
-    :git: https://github.com/Alamofire/Alamofire.git
-    :tag: 4.4.0
   SwiftyJSON:
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 CHECKOUT OPTIONS:
-  Alamofire:
-    :git: https://github.com/Alamofire/Alamofire.git
-    :tag: 4.4.0
   SwiftyJSON:
     :commit: ebc305b69ecca005b636f20e0db4d07d19d333fa
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
 
 SPEC CHECKSUMS:
-  Alamofire: 4c2bf7fa03c4a626163606de0a417568c270575e
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
   AMScrollingNavbar: 64b3626ebd557cbe4ddf7fdd31c652f02c9b8888
   Refresher: 7c6f09ef3428aa921cb477611fb26bf29a9e5492
   SwiftyJSON: 05cf0e98a950e2ba343735264f5a96b81e755d00
 
-PODFILE CHECKSUM: 59ae25e9ee6f78dda123467986525b5cdc2ef7b9
+PODFILE CHECKSUM: 16555bdc5f90d2d3b8d010889611651c83284fe6
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.5.0
