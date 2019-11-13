@@ -1,36 +1,28 @@
 PODS:
-  - Alamofire (4.5.0)
-  - AMScrollingNavbar (3.4.0)
-  - Refresher (0.6.1)
-  - SwiftyJSON (3.1.4)
+  - Alamofire (4.9.1)
+  - AMScrollingNavbar (5.4.0)
+  - Refresher (0.7.0)
+  - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - Alamofire
   - AMScrollingNavbar
   - Refresher
-  - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`)
+  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - AMScrollingNavbar
     - Refresher
-
-EXTERNAL SOURCES:
-  SwiftyJSON:
-    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
-
-CHECKOUT OPTIONS:
-  SwiftyJSON:
-    :commit: ebc305b69ecca005b636f20e0db4d07d19d333fa
-    :git: https://github.com/SwiftyJSON/SwiftyJSON.git
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  AMScrollingNavbar: 64b3626ebd557cbe4ddf7fdd31c652f02c9b8888
-  Refresher: 7c6f09ef3428aa921cb477611fb26bf29a9e5492
-  SwiftyJSON: 05cf0e98a950e2ba343735264f5a96b81e755d00
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  AMScrollingNavbar: 5fcd5b20cec965115b36e350509e0dbd84f9679b
+  Refresher: a72fdd35f0e1854d787eb5eb6853dd3f6d81c1e5
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 16555bdc5f90d2d3b8d010889611651c83284fe6
+PODFILE CHECKSUM: a453dab97406551635a1cc56a147348eb8bac723
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.8.4

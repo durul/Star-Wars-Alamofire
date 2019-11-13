@@ -42,7 +42,7 @@ class PopupVC: UIViewController {
         }, completion: {
             (value: Bool) in
             
-            self.removeFromParentViewController()
+            self.removeFromParent()
             self.view.removeFromSuperview()
         })
     }

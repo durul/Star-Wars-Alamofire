@@ -1,0 +1,5 @@
+${PODS_ROOT}/Target Support Files/Pods-startwars/Pods-startwars-frameworks.sh
+${BUILT_PRODUCTS_DIR}/AMScrollingNavbar/AMScrollingNavbar.framework
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/Refresher/Refresher.framework
+${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
